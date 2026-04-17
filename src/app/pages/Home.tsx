@@ -19,7 +19,7 @@ const galleryImages = [
 ];
 
 const Home = () => {
-  const API_URL = import.meta.env.VITE_API_URL; // ✅ IMPORTANT
+  const API_URL = import.meta.env.VITE_API_URL || "https://sathi-foundation-backend.onrender.com";
 
   const [loadingScreen, setLoadingScreen] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -46,7 +46,6 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ FIXED STORIES FETCH
   useEffect(() => {
     const fetchStories = async () => {
       try {
@@ -64,7 +63,6 @@ const Home = () => {
     setMemberForm({ ...memberForm, [e.target.name]: e.target.value });
   };
 
-  // ✅ FIXED MEMBER SUBMIT
   const handleMemberSubmit = async (e) => {
     e.preventDefault();
     const aadhaarClean = memberForm.aadhaar.replace(/\s/g, "");
@@ -94,10 +92,8 @@ const Home = () => {
 
   return (
     <div>
-      {/* ✅ STORIES UI FIX (IMPORTANT PART) */}
       {stories.map((story) => (
         <div key={story._id}>
-          {/* ✅ FIXED IMAGE URL */}
           <ImageWithFallback src={`${API_URL}${story.image}`} />
           <h3>{story.subject}</h3>
         </div>
