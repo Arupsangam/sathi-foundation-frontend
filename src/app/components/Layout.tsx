@@ -33,7 +33,7 @@ const Layout = () => {
               />
               <div className="hidden sm:block">
                 <h1 className="font-bold text-lg">ସାଥି ସାହାର୍ଯ୍ୟ ସାରାକାଳ</h1>
-                <p className="text-xs opacity-90">Saathi Sahajya Sarakala</p>
+                <p className="text-xs opacity-90">Saathi Foundation Trust</p>
               </div>
             </Link>
 
