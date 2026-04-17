@@ -32,8 +32,8 @@ const Layout = () => {
                 className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-md"
               />
               <div className="hidden sm:block">
-                <h1 className="font-bold text-lg">ସାଥି ସାହାଯ୍ୟ ସାରାକାଳ</h1>
-                <p className="text-xs opacity-90">Sathi Sahajya Sarakala</p>
+                <h1 className="font-bold text-lg">ସାଥି ସାହାର୍ଯ୍ୟ ସାରାକାଳ</h1>
+                <p className="text-xs opacity-90">Saathi Sahajya Sarakala</p>
               </div>
             </Link>
 
