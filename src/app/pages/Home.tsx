@@ -33,7 +33,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoadingScreen(false), 2800); // Slightly longer for premium feel
+    const timer = setTimeout(() => setLoadingScreen(false), 2800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -87,7 +87,6 @@ const Home = () => {
   return (
     <div className="bg-[#F8FAFC] font-sans selection:bg-green-100 selection:text-green-900 overflow-x-hidden">
       
-      {/* PROFESSIONAL LOGO FLOATING BUBBLE LOADER */}
       <AnimatePresence>
         {loadingScreen && (
           <motion.div 
@@ -95,32 +94,21 @@ const Home = () => {
             exit={{ opacity: 0, transition: { duration: 1, ease: "easeInOut" } }}
           >
             <div className="relative flex flex-col items-center">
-              
-              {/* Animated Floating Bubbles */}
               {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
                   className="absolute rounded-full bg-gradient-to-tr from-[#16a34a] to-[#1e3a8a] opacity-20 blur-[1px]"
-                  style={{
-                    width: Math.random() * 15 + 5,
-                    height: Math.random() * 15 + 5,
-                  }}
+                  style={{ width: Math.random() * 15 + 5, height: Math.random() * 15 + 5 }}
                   animate={{
                     y: [0, -100 - Math.random() * 50],
                     x: [0, (Math.random() - 0.5) * 60],
                     opacity: [0, 0.4, 0],
                     scale: [0.5, 1.2, 0.8]
                   }}
-                  transition={{
-                    duration: 2 + Math.random() * 2,
-                    repeat: Infinity,
-                    delay: i * 0.3,
-                    ease: "easeInOut"
-                  }}
+                  transition={{ duration: 2 + Math.random() * 2, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
                 />
               ))}
 
-              {/* Central Logo with breathing effect */}
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -130,7 +118,6 @@ const Home = () => {
                 <div className="p-1 rounded-full bg-gradient-to-tr from-[#16a34a] to-[#1e3a8a]">
                    <img src="/assets/logo.jpeg" alt="Logo" className="w-28 h-28 rounded-full border-4 border-white shadow-2xl" />
                 </div>
-                {/* Glow ring */}
                 <motion.div 
                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.1, 0.3] }}
                    transition={{ duration: 3, repeat: Infinity }}
@@ -144,7 +131,7 @@ const Home = () => {
                 transition={{ delay: 0.8 }}
                 className="mt-8 text-center"
               >
-                <h2 className="text-[#1e3a8a] text-xs font-black tracking-[0.5em] uppercase">Sathi Foundation</h2>
+                <h2 className="text-[#1e3a8a] text-xs font-black tracking-[0.4em] uppercase">Saathi Foundation Trust</h2>
                 <div className="flex gap-1 justify-center mt-3">
                    <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1 h-1 bg-green-500 rounded-full" />
                    <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1 h-1 bg-green-500 rounded-full" />
@@ -161,20 +148,14 @@ const Home = () => {
         {/* HERO SECTION */}
         <section className="relative bg-gradient-to-br from-[#16a34a] via-[#15803d] to-[#1e3a8a] text-white px-4 py-28 text-center overflow-hidden">
           <div className="max-w-4xl mx-auto relative z-10">
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <img 
-                src="/assets/logo.jpeg" 
-                className="w-28 h-28 mx-auto mb-8 rounded-full border-4 border-white/20 shadow-2xl" 
-              />
+            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
+              <img src="/assets/logo.jpeg" className="w-28 h-28 mx-auto mb-8 rounded-full border-4 border-white/20 shadow-2xl" alt="Saathi Logo" />
             </motion.div>
             <motion.h1 
               initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
               className="text-4xl md:text-7xl font-black mb-6 tracking-tight leading-tight"
             >
-              ସାଥି ସାହାଯ୍ୟ ସାରାକାଳ
+              ସାଥି ସାହାର୍ଯ୍ୟ ସାରାକାଳ
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -214,20 +195,17 @@ const Home = () => {
         {/* WORK GRID */}
         <section className="px-6 py-24 max-w-7xl mx-auto">
           <div className="flex flex-col items-center mb-16 text-center">
-             <div className="flex items-center gap-2 text-green-600 mb-2">
-                <Sparkle size={18} fill="currentColor"/>
-                <span className="font-black text-xs uppercase tracking-[0.3em]">Our Impact</span>
-             </div>
-             <h2 className="text-3xl font-black text-slate-900 tracking-tighter uppercase">Our Work</h2>
+              <div className="flex items-center gap-2 text-green-600 mb-2">
+                 <Sparkle size={18} fill="currentColor"/>
+                 <span className="font-black text-xs uppercase tracking-[0.3em]">Our Impact</span>
+              </div>
+              <h2 className="text-3xl font-black text-slate-900 tracking-tighter uppercase">Our Work</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {services.map((item, i) => (
               <motion.div 
-                key={i} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
+                key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }} viewport={{ once: true }}
                 whileHover={{ y: -10, scale: 1.02, boxShadow: "0 20px 40px -10px rgba(0,0,0,0.1)" }}
                 className="bg-white p-3 rounded-[2.5rem] shadow-sm border border-slate-50 group cursor-pointer transition-all duration-300"
               >
@@ -245,10 +223,7 @@ const Home = () => {
 
         {/* GALLERY SLIDER */}
         <section className="px-4 py-10 bg-white">
-          <motion.div 
-            whileHover={{ scale: 1.01 }}
-            className="max-w-6xl mx-auto rounded-[3.5rem] overflow-hidden shadow-2xl border-[12px] border-slate-50 relative group transition-all duration-500"
-          >
+          <motion.div whileHover={{ scale: 1.01 }} className="max-w-6xl mx-auto rounded-[3.5rem] overflow-hidden shadow-2xl border-[12px] border-slate-50 relative group transition-all duration-500">
             <motion.div className="flex" animate={{ x: `-${currentSlide * 100}%` }} transition={{ duration: 1.2, ease: [0.6, 0.01, -0.05, 0.9] }}>
               {galleryImages.map((imgSrc, i) => (
                 <div key={i} className="min-w-full h-[350px] md:h-[600px] relative">
@@ -263,15 +238,12 @@ const Home = () => {
         {/* STORIES */}
         <section className="px-6 py-28 bg-slate-50">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 font-black text-4xl text-slate-900 tracking-tight">Active Help Cases</div>
+            <div className="text-center mb-16 font-black text-4xl text-slate-900 tracking-tight uppercase">Active ସାହାଯ୍ୟ Cases</div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {stories.slice(0, 3).map((story, i) => (
                 <motion.div 
-                  key={story._id} 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -15, boxShadow: "0 40px 60px -20px rgba(0,0,0,0.15)" }}
+                  key={story._id} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1 }} whileHover={{ y: -15, boxShadow: "0 40px 60px -20px rgba(0,0,0,0.15)" }}
                   className="bg-white rounded-[3rem] p-6 shadow-sm border border-slate-100 text-center flex flex-col h-full transition-all duration-300"
                 >
                   <div className="w-full h-56 rounded-[2.5rem] overflow-hidden mb-8 shadow-inner">
@@ -281,8 +253,7 @@ const Home = () => {
                   <p className="text-slate-500 text-sm mb-10 line-clamp-3 px-4 leading-relaxed font-medium italic">"{story.description}"</p>
                   <div className="mt-auto">
                     <motion.button 
-                      whileHover={{ scale: 1.05, backgroundColor: "#16a34a" }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ scale: 1.05, backgroundColor: "#16a34a" }} whileTap={{ scale: 0.95 }}
                       onClick={() => navigate("/donate")} 
                       className="w-full bg-slate-900 text-white py-5 px-8 rounded-3xl font-black text-[11px] flex justify-between items-center tracking-widest transition-all group"
                     >
@@ -325,7 +296,7 @@ const Home = () => {
                 className="bg-white/5 p-10 rounded-[3rem] border border-white/10 flex flex-col items-center justify-center gap-5 transition-all group"
               >
                 <Instagram className="text-pink-500 group-hover:scale-125 transition-transform duration-500" size={48} />
-                <span className="text-xs font-black tracking-[0.2em] text-white/70 group-hover:text-white transition-colors">INSTAGRAM</span>
+                <span className="text-xs font-black tracking-[0.2em] text-white/70 group-hover:text-white transition-colors uppercase">Instagram</span>
               </motion.a>
               <motion.a 
                 whileHover={{ y: -10, backgroundColor: "rgba(255,255,255,0.12)", scale: 1.05 }} 
@@ -333,7 +304,7 @@ const Home = () => {
                 className="bg-white/5 p-10 rounded-[3rem] border border-white/10 flex flex-col items-center justify-center gap-5 transition-all group"
               >
                 <Facebook className="text-blue-500 group-hover:scale-125 transition-transform duration-500" size={48} />
-                <span className="text-xs font-black tracking-[0.2em] text-white/70 group-hover:text-white transition-colors">FACEBOOK</span>
+                <span className="text-xs font-black tracking-[0.2em] text-white/70 group-hover:text-white transition-colors uppercase">Facebook</span>
               </motion.a>
             </div>
           </div>
@@ -359,12 +330,10 @@ const Home = () => {
           </div>
         </section>
 
-        {/* HEART DONATE BUTTON */}
         <motion.div 
           animate={{ scale: [1, 1.15, 1], boxShadow: ["0 0 0px rgba(22,163,74,0)", "0 0 30px rgba(22,163,74,0.4)", "0 0 0px rgba(22,163,74,0)"] }}
           transition={{ duration: 2.5, repeat: Infinity }}
-          whileHover={{ scale: 1.3, rotate: 10 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.3, rotate: 10 }} whileTap={{ scale: 0.9 }}
           className="fixed bottom-10 right-10 bg-[#16a34a] text-white p-6 rounded-[2.2rem] cursor-pointer z-50 shadow-2xl transition-all" 
           onClick={() => navigate("/donate")}
         >
@@ -385,7 +354,7 @@ const Home = () => {
                 <input name="name" value={memberForm.name} onChange={handleMemberInput} placeholder="Full Name *" required className="w-full px-7 py-5 bg-slate-50 border-none rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-green-500 transition-all font-medium" />
                 <div className="grid grid-cols-2 gap-4">
                   <input name="age" type="number" value={memberForm.age} onChange={handleMemberInput} placeholder="Age *" required className="w-full px-7 py-5 bg-slate-50 border-none rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-green-500 transition-all font-medium" />
-                  <input name="aadhaar" value={memberForm.aadhaar} onChange={handleMemberInput} maxLength={12} placeholder="Aadhaar *" required className="w-full px-7 py-5 bg-slate-50 border-none rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-green-500 transition-all font-medium" />
+                  <input name="aadhaar" value={memberForm.aadhaar} onChange={handleMemberInput} maxLength={12} placeholder="Aadhaar Number *" required className="w-full px-7 py-5 bg-slate-50 border-none rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-green-500 transition-all font-medium" />
                 </div>
                 <textarea name="address" value={memberForm.address} onChange={handleMemberInput} placeholder="Full Address *" required rows={3} className="w-full px-7 py-5 bg-slate-50 border-none rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-green-500 transition-all font-medium resize-none" />
                 <div className="grid grid-cols-2 gap-4">
@@ -393,10 +362,9 @@ const Home = () => {
                   <input name="email" type="email" value={memberForm.email} onChange={handleMemberInput} placeholder="Email" className="w-full px-7 py-5 bg-slate-50 border-none rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-green-500 transition-all font-medium" />
                 </div>
                 <motion.button 
-                  whileHover={{ scale: 1.02, letterSpacing: "0.2em", backgroundColor: "#1e3a8a" }}
+                  whileHover={{ scale: 1.02, letterSpacing: "0.1em", backgroundColor: "#1e3a8a" }}
                   whileTap={{ scale: 0.98 }}
-                  type="submit" 
-                  disabled={isSubmitting} 
+                  type="submit" disabled={isSubmitting} 
                   className="w-full bg-gradient-to-r from-[#16a34a] to-[#1e3a8a] text-white py-6 rounded-3xl font-black uppercase tracking-widest mt-6 shadow-xl active:scale-95 transition-all"
                 >
                   {isSubmitting ? "PROCESSING..." : "Submit Application"}
@@ -422,11 +390,7 @@ const Home = () => {
       </AnimatePresence>
 
       {/* DEVELOPED BY */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        className="py-12 bg-white text-center border-t border-slate-100"
-      >
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="py-12 bg-white text-center border-t border-slate-100">
         <p className="text-[10px] text-slate-400 tracking-[0.3em] font-black uppercase hover:text-[#1e3a8a] transition-colors cursor-default">
           developed by ArupSangam
         </p>
